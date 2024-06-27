@@ -1,15 +1,18 @@
 def check_temp_limits(temperature):
      if temperature < 0 or temperature > 45:
+        print('Temperature is out of range!')
         return False
      return True
      
 def check_soc_limits(soc):
   if soc < 20 or soc > 80:
+      print('State of Charge is out of range!')
       return False
   return True
   
 def check_charge_rate (charge_rate):
   if charge_rate > 0.8:
+      print('Charge rate is out of range!')
       return False
   return True
   
