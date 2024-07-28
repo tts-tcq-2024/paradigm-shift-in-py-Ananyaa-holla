@@ -1,5 +1,5 @@
 import unittest
-from check_limits import BatteryManagementSystem
+from battery_management_system import BatteryManagementSystem
 
 class TestBatteryManagementSystem(unittest.TestCase):
     def setUp(self):
