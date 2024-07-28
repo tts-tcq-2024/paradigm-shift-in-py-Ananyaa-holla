@@ -31,21 +31,24 @@ class BatteryManagementSystem:
 
         self.min_charge_rate = 0
         self.max_charge_rate = 0.8
+    
+    def get_warning_level(self, value, lower_limit, upper_limit, warning_range, low_warning_msg, high_warning_msg):
+        if value < lower_limit + warning_range:
+            return self.messages[self.language][low_warning_msg]
+        elif value > upper_limit - warning_range:
+            return self.messages[self.language][high_warning_msg]
+        else:
+            return self.messages[self.language]['ok']
 
     def get_range(self, value, lower_limit, upper_limit, warning_range, low_warning_msg, high_warning_msg, error_msg):
         """
        Check if the input lies within range/limits and return the corresponding message
         """
-        if value < lower_limit:
+        if value < lower_limit or value > upper_limit:
             return self.messages[self.language][error_msg]
-        elif value < lower_limit + warning_range:
-            return self.messages[self.language][low_warning_msg]
-        elif value > upper_limit:
-            return self.messages[self.language][error_msg]
-        elif value > upper_limit - warning_range:
-            return self.messages[self.language][high_warning_msg]
-        else:
-            return self.messages[self.language]['ok']
+        else :
+            return self.get_warning_level(value, lower_limit, upper_limit, warning_range, low_warning_msg, high_warning_msg)
+       
 
     def monitor_battery(self, soc, temperature, charge_rate):
         """
