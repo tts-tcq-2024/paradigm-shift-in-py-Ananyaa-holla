@@ -1,6 +1,7 @@
 import unittest
 from battery_management_system import BatteryManagementSystem
 
+
 class TestBatteryManagementSystem(unittest.TestCase):
     def setUp(self):
         self.battery_check_lang_en = BatteryManagementSystem(language='en')
